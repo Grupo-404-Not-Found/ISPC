@@ -1,0 +1,46 @@
+
+Table users {
+  id integer [primary key, increment]
+  username varchar(50) [unique, not null]
+  email varchar(100) [unique, not null]
+  role varchar(255)
+  password_hash varchar(255) [not null]
+  created_at timestamp
+}
+
+Table terminal {
+  terminal_id integer [primary key, increment]
+  user_id integer [not null, ref: > users.id]
+  terminal_name varchar(100) [not null]
+  location varchar(100)
+  created_at timestamp
+}
+
+Table devices {
+  device_id integer [primary key]
+  terminal_id integer [not null, ref: > terminal.terminal_id]
+  device_name varchar(50) [not null]
+  device_type varchar(30)
+  device_serial_number varchar(100) [not null]
+  status varchar(20)
+  user_id integer [not null, ref: > users.id]
+  metadata JSON
+}
+
+Table Cameras {
+  camera_id integer [primary key, increment]
+  device_id integer [not null, ref: > devices.device_id]
+  camera_name varchar(50) [not null]
+  timestamp datetime
+  status varchar(255)
+  file_path varchar(150) [not null]
+}
+
+Table movil_devices {
+  movil_device_id integer [primary key, increment]
+  user_id integer [not null, ref: > users.id]
+  movil_device_name varchar(50) [not null]
+  os varchar(50)
+  permissions varchar(20)
+  last_used timestamp
+}
