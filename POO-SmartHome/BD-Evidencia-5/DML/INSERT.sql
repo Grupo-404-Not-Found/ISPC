@@ -83,3 +83,60 @@ INSERT INTO automatizaciones (nombre, descripcion) VALUES
 
 INSERT INTO automatizacion_dispositivo (automatizacion_id, device_id) VALUES
 (1, 100), (1, 101), (1, 102);
+
+-- A continuacion se agregan las instancias INSERTS faltantes para completar al menos 30 registros
+
+INSERT INTO usuarios (username, email, role, password_hash, created_at) VALUES
+('andres', 'andres@example.com', 'user', 'hash115', NOW()),
+
+INSERT INTO terminales (user_id, terminal_name, location, created_at) VALUES
+(5, 'Terminal Central 2', 'Sala de estar', NOW());
+
+INSERT INTO dispositivos (device_id, terminal_id, user_id, nombre, tipo, numero_serie, estado, metadata, created_at) VALUES
+(113, 1, 5, 'Dispositivo N', 'Sensor',      'SN-014', 'activo',   JSON_OBJECT('version','4.1','fabricante','ACME'),      NOW()),
+(114, 1, 5, 'Dispositivo O', 'Cámara',      'SN-015', 'inactivo', JSON_OBJECT('version','1.7','fabricante','CamTech'),  NOW());
+
+INSERT INTO camaras (device_id, nombre, estado, file_path, timestamp) VALUES
+(113, 'Camara 14', 'grabando', '/videos/cam14.mp4', NOW()),
+
+INSERT INTO dispositivos_moviles (user_id, nombre, sistema_operativo, permisos, last_used) VALUES
+(5, 'Surface Pro', 'Windows', 'admin', NOW());
+
+INSERT INTO automatizaciones (nombre, descripcion) VALUES
+('Seguridad Nocturna', 'Activa todas las camaras y sensores por la noche');
+
+INSERT INTO automatizacion_dispositivo (automatizacion_id, device_id) VALUES
+(2, 103), (2, 104), (2, 105);
+
+INSERT INTO usuarios (username, email, role, password_hash, created_at) VALUES
+('fernando', 'fernando@example.com', 'user', 'hash116', NOW());
+
+INSERT INTO terminales (user_id, terminal_name, location, created_at) VALUES
+(6, 'Terminal Secundaria', 'Habitacion', NOW());
+
+INSERT INTO usuarios (username, email, role, password_hash, created_at) VALUES
+('gabriela', 'gabriela@example.com', 'user', 'hash117', NOW());
+
+INSERT INTO terminales (user_id, terminal_name, location, created_at) VALUES
+(7, 'Terminal Jardín', 'Patio', NOW());
+
+INSERT INTO dispositivos (device_id, terminal_id, user_id, nombre, tipo, numero_serie, estado, metadata, created_at) VALUES
+(115, 2, 7, 'Dispositivo P', 'Sensor', 'SN-016', 'activo', JSON_OBJECT('version','4.2','fabricante','ACME'), NOW());
+
+INSERT INTO camaras (device_id, nombre, estado, file_path, timestamp) VALUES
+(115, 'Camara 15', 'apagada', '/videos/cam15.mp4', NOW());
+
+INSERT INTO dispositivos_moviles (user_id, nombre, sistema_operativo, permisos, last_used) VALUES
+(7, 'OnePlus 12', 'Android', 'lectura', NOW());
+
+INSERT INTO automatizaciones (nombre, descripcion) VALUES
+('Control de acceso', 'Desbloquea puertas al detectar usuarios autorizados');
+
+INSERT INTO automatizacion_dispositivo (automatizacion_id, device_id) VALUES
+(3, 106), (3, 107);
+
+INSERT INTO usuarios (username, email, role, password_hash, created_at) VALUES
+('patricia', 'patricia@example.com', 'user', 'hash118', NOW());
+
+INSERT INTO terminales (user_id, terminal_name, location, created_at) VALUES
+(8, 'Terminal Taller', 'Sótano', NOW());
