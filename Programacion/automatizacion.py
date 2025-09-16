@@ -1,11 +1,31 @@
 def ejecutar_automatizacion(dispositivos):
     """
-    Automatización: Modo Ahorro de Energía.
-    Esta función apaga todos los dispositivos cuyo tipo no sea 'cámara'.
-    Se asume que las cámaras deben seguir funcionando por seguridad.
+    Automatización: Modo Ahorro de Energía
+
+    Descripción:
+    Recorre todos los dispositivos registrados y apaga aquellos que no son de tipo 'cámara'.
+    Las cámaras deben permanecer encendidas por razones de seguridad.
+
+    Parámetros:
+    dispositivos (list[dict]): Lista de diccionarios con claves 'nombre', 'tipo' y 'estado'.
+
+    Efectos:
+    - Modifica el estado de los dispositivos no esenciales a "apagado".
+
+    Ejemplo:
+    dispositivos = [
+        {"nombre": "Luz Living", "tipo": "luz", "estado": "encendido"},
+        {"nombre": "Cámara Entrada", "tipo": "cámara", "estado": "encendido"}
+    ]
+    ejecutar_automatizacion(dispositivos)
+
+    Resultado esperado:
+    - La luz del living queda "apagado".
+    - La cámara de entrada se mantiene "encendido".
     """
-    print("\n🔋 Ejecutando Modo Ahorro de Energía...")
+    print("\nEjecutando Modo Ahorro de Energía...")
     for d in dispositivos:
-        if d['tipo'].lower() != "cámara":
+        t = (d.get('tipo') or '').strip().lower()
+        if t not in ("cámara", "camara"):  # acepta con y sin acento
             d['estado'] = "apagado"
-    print("✅ Todos los dispositivos no esenciales fueron apagados.")
+    print("Dispositivos no esenciales apagados.")
