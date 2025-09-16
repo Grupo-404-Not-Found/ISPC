@@ -1,0 +1,3 @@
+Se corrige esquema de modelo relacional en el archivo "AWS y DER.drawio.pdf".
+Se agrega documentacion de la automatizacion elegida en el archivo "automatizacion.py".
+Ambos archivos se encuentran en la carpeta base de datos y programacion respectivamente.
